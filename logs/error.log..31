@@ -1,0 +1,179 @@
+[2022-03-31T17:49:40.920] [ERROR] error - ETH No transactions found
+[2022-03-31T17:53:42.394] [ERROR] error - Get polygon blockNum Error = Max rate limit reached
+[2022-03-31T17:54:02.382] [ERROR] error - Get polygon tx Error = Max rate limit reached
+[2022-03-31T17:54:02.711] [ERROR] error - Get polygon blockNum Error = Max rate limit reached
+[2022-03-31T17:54:22.382] [ERROR] error - Get polygon blockNum Error = Max rate limit reached
+[2022-03-31T17:55:20.912] [ERROR] error - EthTxError = Max rate limit reached
+[2022-03-31T17:56:22.514] [ERROR] error - Get polygon blockNum Error = Max rate limit reached
+[2022-03-31T17:56:41.577] [ERROR] error - Get polygon tx Error = Max rate limit reached
+[2022-03-31T17:56:41.885] [ERROR] error - Get polygon blockNum Error = Max rate limit reached
+[2022-03-31T17:59:00.615] [ERROR] error - Get polygon tx Error = Max rate limit reached
+[2022-03-31T17:59:20.482] [ERROR] error - Get polygon tx Error = Max rate limit reached
+[2022-03-31T18:00:00.892] [ERROR] error - Get polygon blockNum Error = Max rate limit reached
+[2022-03-31T18:00:20.551] [ERROR] error - Get polygon tx Error = Max rate limit reached
+[2022-03-31T18:00:40.828] [ERROR] error - Get polygon blockNum Error = Max rate limit reached
+[2022-03-31T18:02:00.333] [ERROR] error - Get polygon tx Error = Max rate limit reached
+[2022-03-31T18:02:20.826] [ERROR] error - Get polygon blockNum Error = Max rate limit reached
+[2022-03-31T18:03:00.924] [ERROR] error - Get polygon blockNum Error = Max rate limit reached
+[2022-03-31T18:03:20.819] [ERROR] error - Get polygon blockNum Error = Max rate limit reached
+[2022-03-31T18:04:21.007] [ERROR] error - Get polygon blockNum Error = Max rate limit reached
+[2022-03-31T18:05:00.847] [ERROR] error - Get polygon blockNum Error = Max rate limit reached
+[2022-03-31T18:05:22.865] [ERROR] error - Get Etherscan BlockNum Error = Max rate limit reached
+[2022-03-31T18:06:20.969] [ERROR] error - Get polygon blockNum Error = Max rate limit reached
+[2022-03-31T18:07:01.042] [ERROR] error - Get polygon blockNum Error = Max rate limit reached
+[2022-03-31T18:07:21.131] [ERROR] error - Get polygon blockNum Error = Max rate limit reached
+[2022-03-31T18:08:00.831] [ERROR] error - Get polygon blockNum Error = Max rate limit reached
+[2022-03-31T18:08:20.897] [ERROR] error - Get polygon blockNum Error = Max rate limit reached
+[2022-03-31T18:09:00.569] [ERROR] error - Get polygon tx Error = Max rate limit reached
+[2022-03-31T18:10:01.873] [ERROR] error - Get Etherscan BlockNum Error = Max rate limit reached
+[2022-03-31T18:16:25.024] [ERROR] error - Get polygon tx Error = Error: read ECONNRESET
+    at TLSWrap.onStreamRead (internal/stream_base_commons.js:209:20) {
+  description: 'undefined',
+  number: 'undefined',
+  fileName: 'undefined',
+  lineNumber: 'undefined',
+  columnNumber: 'undefined',
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false
+    },
+    transformRequest: [ null ],
+    transformResponse: [ null ],
+    timeout: 0,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'User-Agent': 'axios/0.26.1'
+    },
+    proxy: false,
+    httpsAgent: {
+      options: [Object],
+      proxyOptions: [Object],
+      maxSockets: 'Infinity',
+      requests: [],
+      sockets: [Array],
+      _events: {},
+      _eventsCount: 1,
+      defaultPort: 443
+    },
+    params: {
+      module: 'account',
+      action: 'txlist',
+      tokenAddress: '0x0000000000000000000000000000000000000000',
+      address: '0x80C67432656d59144cEFf962E8fAF8926599bCF8',
+      startblock: 0,
+      endblock: 9999999999999,
+      page: 1,
+      offset: 1,
+      sort: 'desc',
+      apikey: 'MNTWZ7N76E5TICUS4UTJF4ITQHMBMPZK87'
+    },
+    method: 'get',
+    url: 'https://api.polygonscan.com/api',
+    data: 'undefined'
+  },
+  code: 'ECONNRESET',
+  status: null
+}
+[2022-03-31T18:16:25.029] [ERROR] error - Get Op Tx Error = Error: read ECONNRESET
+    at TLSWrap.onStreamRead (internal/stream_base_commons.js:209:20) {
+  description: 'undefined',
+  number: 'undefined',
+  fileName: 'undefined',
+  lineNumber: 'undefined',
+  columnNumber: 'undefined',
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false
+    },
+    transformRequest: [ null ],
+    transformResponse: [ null ],
+    timeout: 0,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'User-Agent': 'axios/0.26.1'
+    },
+    proxy: false,
+    httpsAgent: {
+      options: [Object],
+      proxyOptions: [Object],
+      maxSockets: 'Infinity',
+      requests: [],
+      sockets: [Array],
+      _events: {},
+      _eventsCount: 1,
+      defaultPort: 443
+    },
+    params: {
+      module: 'account',
+      action: 'txlist',
+      tokenAddress: '0x0000000000000000000000000000000000000000',
+      address: '0x80C67432656d59144cEFf962E8fAF8926599bCF8',
+      startblock: 0,
+      endblock: 9999999999999,
+      page: 1,
+      offset: 1,
+      sort: 'desc',
+      apikey: 'YN8TNJESUY8P984DKUP6KDAZG4PTVIV8C3'
+    },
+    method: 'get',
+    url: 'https://api-optimistic.etherscan.io/api',
+    data: 'undefined'
+  },
+  code: 'ECONNRESET',
+  status: null
+}
+[2022-03-31T18:16:25.032] [ERROR] error - Get zksync tx Error = Error: read ECONNRESET
+    at TLSWrap.onStreamRead (internal/stream_base_commons.js:209:20) {
+  description: 'undefined',
+  number: 'undefined',
+  fileName: 'undefined',
+  lineNumber: 'undefined',
+  columnNumber: 'undefined',
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false
+    },
+    transformRequest: [ null ],
+    transformResponse: [ null ],
+    timeout: 0,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'User-Agent': 'axios/0.26.1'
+    },
+    proxy: false,
+    httpsAgent: {
+      options: [Object],
+      proxyOptions: [Object],
+      maxSockets: 'Infinity',
+      requests: [],
+      sockets: [Array],
+      _events: {},
+      _eventsCount: 1,
+      defaultPort: 443
+    },
+    params: { from: 'latest', limit: 1, direction: 'older' },
+    method: 'get',
+    url: 'https://api.zksync.io/api/v0.2/accounts/0x80C67432656d59144cEFf962E8fAF8926599bCF8/transactions',
+    data: 'undefined'
+  },
+  code: 'ECONNRESET',
+  status: null
+}
