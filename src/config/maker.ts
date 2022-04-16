@@ -1,5 +1,5 @@
 export default {
-  makerAddress:process.env.MAKER_ADDRESS,
+  makerAddress: process.env.MAKER_ADDRESS,
   etherscan: {
     key: process.env.VUE_APP_ETH_KEY,
     Mainnet: "https://api.etherscan.io/api",
@@ -39,7 +39,8 @@ export default {
     rinkeyChainID: "77"
   },
   loopring: {
-    key: process.env.VUE_APP_LP_MKTEST_KEY,
+    dev_key: process.env.VUE_APP_LP_MKTEST_KEY,
+    pro_key: process.env.VUE_APP_LP_MK_KEY,
     Mainnet: "https://api3.loopring.io",
     Rinkeby: "https://uat2.loopring.io",
     chainID: "9",

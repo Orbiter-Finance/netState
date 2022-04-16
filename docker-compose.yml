@@ -12,7 +12,7 @@ services:
       - mysql
     command: yarn run start
     environment:
-      NODE_ENV: "development"
+      NODE_ENV: "production"
       DB_HOST: mysql
       DB_PORT: "${DB_PORT}"
       DB_USER: "${DB_USER}"
@@ -27,8 +27,8 @@ services:
     networks:
       - app-network
   mysql:
-    # image: mysql:5.7.16
-    image: ibex/debian-mysql-server-5.7
+    image: mysql:5.7.16
+    # image: ibex/debian-mysql-server-5.7
     # Set mysqld charset
     command:
       - "--character-set-server=utf8mb4"
