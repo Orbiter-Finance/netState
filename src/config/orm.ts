@@ -22,3 +22,5 @@ export const options: ConnectionOptions = {
     //   'src/subscriber/**/*.ts'
   ]
 };
+
+console.warn("11111 =", options);

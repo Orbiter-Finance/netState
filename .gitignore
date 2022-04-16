@@ -4,6 +4,8 @@ logs
 mysql
 /dist
 .env
+logs
+mysql
 
 # local env files
 .env.local
