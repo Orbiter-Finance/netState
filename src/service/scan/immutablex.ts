@@ -1,6 +1,5 @@
 import { IMXHelper } from "./imx_helper";
-import { accessLogger, errorLogger } from "../../util/logger";
-import { makerConfig } from "../../config";
+import { errorLogger } from "../../util/logger";
 
 export default {
   /**
@@ -19,6 +18,7 @@ export default {
       });
       if (!resp?.result || resp.result.length < 1) {
         // 没有交易
+        errorLogger.error("IMX No transactions found");
         return {
           code: 1,
           data: "no imx transaction"
@@ -26,12 +26,12 @@ export default {
       }
       for (const item of resp.result) {
         const transaction = imxHelper.toTransaction(item);
-        console.log("imxHash =", transaction.hash);
         return {
           code: 0,
           data: transaction.hash
         };
       }
+      errorLogger.error("IMX TX NetError");
       return {
         code: 1,
         data: "get imx transaction error"

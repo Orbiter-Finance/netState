@@ -6,6 +6,7 @@ import { accessLogger, errorLogger } from "../../util/logger";
 var configNet = makerConfig["etherscan"].Mainnet;
 
 export default {
+
   getTxList: async function (req, chainId) {
     const params = {
       module: "account",
@@ -26,7 +27,7 @@ export default {
       let response = await axios.get(configNet, { params });
       if (response.status === 200) {
         var respData = response.data;
-        if (respData.status === "1" && respData.message === "OK") {
+        if (respData.status === "1" && respData.message === "OK"&&respData.result[0]) {
           return {
             code: 0,
             data: respData.result[0].hash

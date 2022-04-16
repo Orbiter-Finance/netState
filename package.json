@@ -1,12 +1,13 @@
 {
-  "name": "networkstatus",
+  "name": "netstate",
   "version": "1.0.0",
   "description": "netWorkState",
   "main": "index.js",
   "scripts": {
     "test": "test",
     "dev": "cross-env NODE_ENV=development nodemon src/index.ts --no-cache",
-    "build": "cross-env NODE_ENV=development nodemon src/index.ts --no-cache"
+    "start": "node ./dist/index.js",
+    "build": "tsc -p ."
   },
   "keywords": [
     "network"
@@ -24,11 +25,8 @@
     "koa2-cors": "^2.0.6",
     "log4js": "^6.3.0",
     "mysql2": "^2.3.3",
-    "node-cache": "^5.1.2",
     "node-schedule": "^2.1.0",
     "path": "^0.12.7",
-    "semver": "^7.3.5",
-    "tunnel": "0.0.6",
     "typeorm": "^0.2.37"
   },
   "devDependencies": {

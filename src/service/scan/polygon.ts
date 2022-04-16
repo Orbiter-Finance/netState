@@ -19,14 +19,14 @@ export default {
       sort: req.sort,
       apikey: makerConfig["polygon"].key
     };
-    if (chainId === 5) {
+    if (chainId === 77) {
       configNet = makerConfig["polygon"].Rinkeby;
     }
     try {
       let response = await axios.get(configNet, { params });
       if (response.status === 200) {
         var respData = response.data;
-        if (respData.status === "1" && respData.message === "OK") {
+        if (respData.status === "1" && respData.message === "OK" && respData.result[0]) {
           return {
             code: 0,
             data: respData.result[0].hash
@@ -65,7 +65,7 @@ export default {
   },
 
   getBlockNumberWithTimeStamp: async function (req, chainId) {
-    if (chainId == 5) {
+    if (chainId == 77) {
       configNet = makerConfig["polygon"].Rinkeby;
     }
     const params = {

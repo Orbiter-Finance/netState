@@ -6,10 +6,9 @@ dotenv.config({
 import * as ormConfig from "./orm";
 import * as logConfig from "./log";
 import makerConfig from "./maker";
-
 const appConfig = {
   options: {
-    port: process.env.APP_OPTIONS_PORT || 3002,
+    port: process.env.APP_OPTIONS_PORT || 80,
     host: process.env.APP_OPTIONS_HOST || "0.0.0.0"
   }
 };

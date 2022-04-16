@@ -49,5 +49,17 @@ export default {
     Rinkeby: "https://api.ropsten.x.immutable.com/v1",
     chainID: "8",
     rinkeyChainID: "88"
+  },
+  metis: {
+    Mainnet: "https://andromeda-explorer.metis.io/api",
+    Rinkeby: "https://stardust-explorer.metis.io/api",
+    chainID: "10",
+    rinkeyChainID: "510"
+  },
+  dydx: {
+    Mainnet: "https://api.dydx.exchange",
+    Rinkeby: "https://api.stage.dydx.exchange",
+    chainID: "11",
+    rinkeyChainID: "511"
   }
 };

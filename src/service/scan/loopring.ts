@@ -1,25 +1,21 @@
-import { UserAPI, ExchangeAPI } from "@loopring-web/loopring-sdk";
 import axios from "axios";
-import { config } from "dotenv";
 import { makerConfig } from "../../config";
-import { accessLogger, errorLogger } from "../../util/logger";
+import { errorLogger } from "../../util/logger";
 
 let configNet = makerConfig["loopring"].Mainnet;
-
+let apiKey = makerConfig["loopring"].key
+let accountId = 0
 export default {
-  getUserAPI: function (localChainID) {
-    let netWorkID = localChainID == 9 ? 1 : 5;
-    return new UserAPI({ chainId: netWorkID });
-  },
-
   getTxList: async function (localChainID) {
     if (localChainID == 99) {
       configNet = makerConfig["loopring"].Rinkeby;
     }
-
-    let url = configNet + "/user/transfers";
+    if (!accountId) {
+      accountId = await getAccountInfo()
+    }
+    let url = configNet + "/api/v3/user/transfers";
     const params = {
-      accountId: 93994,
+      accountId: accountId,
       start: 0,
       end: 9999999999999,
       status: "processed,processing,received",
@@ -28,16 +24,11 @@ export default {
       tokenSymbol: "ETH",
       transferTypes: "transfer"
     };
-    let apiKey =
-      localChainID == 9
-        ? makerConfig["loopring"].apiKey
-        : makerConfig["loopring"].test_apiKey;
-
     try {
       const LPTransferResult = await axios.get(url, {
         params: params,
         headers: {
-          "X-API-KEY": apiKey
+          "X-API-KEY": apiKey ? apiKey : ''
         }
       });
       if (
@@ -71,5 +62,26 @@ export default {
         data: error
       };
     }
-  }
+  },
+
 };
+
+async function getAccountInfo() {
+  let url = configNet + "/api/v3/account";
+  const params = {
+    owner: makerConfig["makerAddress"]
+  };
+  try {
+    const res: any = await axios.get(url, {
+      params: params,
+    });
+    if (res.status == 200 && res.data && res.data.accountId) {
+      return res.data.accountId
+    } else {
+      return 0
+    }
+  } catch (error) {
+    errorLogger.error("get lp account Error =", error.message)
+    return 0
+  }
+}

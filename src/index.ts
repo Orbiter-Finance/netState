@@ -1,16 +1,14 @@
-import cluster from "cluster";
 import Koa from "koa";
 import { appConfig, ormConfig } from "./config";
-import semver from "semver";
+
 import cors from "koa2-cors";
 import koaBodyparser from "koa-bodyparser";
 import controller from "./controller";
 import { createConnection } from "typeorm";
 import { sleep } from "./util";
 import { Core } from "./util/core";
-import NodeCache from "node-cache";
-import { startJobs } from "./schedule";
 import { accessLogger, errorLogger } from "./util/logger";
+import { startJobs } from './schedule'
 
 const startKoa = () => {
   const koa = new Koa();
@@ -59,12 +57,10 @@ const main = async () => {
         // db bind
         Core.db = await createConnection(ormConfig.options);
 
-        // memoryCache bind
-        Core.memoryCache = new NodeCache();
-
         // Break if connected
         break;
       } catch (err) {
+        console.log(err, 'err')
         console.log(
           `process: ${process.pid}. Connect to database failed: ${index}`
         );
@@ -77,38 +73,8 @@ const main = async () => {
         await sleep(1500);
       }
     }
-    const clusterIsPrimary = () => {
-      if (semver.gte(process.version, "v16.0.0")) {
-        return cluster.isPrimary;
-      }
-      return cluster.isMaster;
-    };
-
-    if (clusterIsPrimary()) {
-      // StarkKoa in master only
-      startKoa();
-      // Manage child process
-      let childProcessId: number | undefined;
-      cluster.on("exit", (worker, code, signal) => {
-        // Refork
-        if (worker.process.pid == childProcessId) {
-          accessLogger.info(
-            `Child process exited, code: ${code}, signal: ${signal}, refork it!`
-          );
-          cluster.fork();
-        }
-      });
-      cluster.on("fork", (worker) => {
-        accessLogger.info(
-          `Child process exited, code: ${worker.process.pid}, fork it!`
-        );
-        childProcessId = worker.process.pid;
-      });
-      cluster.fork();
-    } else {
-      // StartJobs in child process
-      startJobs();
-    }
+    startKoa();
+    startJobs()
   } catch (error) {
     errorLogger.error("error =", error);
   }

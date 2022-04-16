@@ -2,7 +2,6 @@
 node_modules
 /dist
 .env
-maker.ts
 
 # local env files
 .env.local

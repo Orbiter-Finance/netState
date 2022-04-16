@@ -18,14 +18,14 @@ export default {
       offset: req.offset,
       sort: req.sort
     };
-    if (chainId === 5) {
+    if (chainId === 22) {
       configNet = makerConfig["arbitrum"].Rinkeby;
     }
     try {
       let response = await axios.get(configNet, { params });
       if (response.status === 200) {
         var respData = response.data;
-        if (respData.status === "1" && respData.message === "OK") {
+        if (respData.status === "1" && respData.message === "OK"&&respData.result[0]) {
           return {
             code: 0,
             data: respData.result[0].hash

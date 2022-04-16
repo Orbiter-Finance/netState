@@ -1,0 +1,131 @@
+[2022-04-13T16:02:36.327] [ERROR] error - error = Error: Unknown database 'orbiter-netstate'
+    at Packet.asError (C:\Users\aneng\Desktop\netstate\backend\node_modules\mysql2\lib\packets\packet.js:728:17)
+    at ClientHandshake.execute (C:\Users\aneng\Desktop\netstate\backend\node_modules\mysql2\lib\commands\command.js:29:26)
+    at PoolConnection.handlePacket (C:\Users\aneng\Desktop\netstate\backend\node_modules\mysql2\lib\connection.js:456:32)
+    at PacketParser.onPacket (C:\Users\aneng\Desktop\netstate\backend\node_modules\mysql2\lib\connection.js:85:12)
+    at PacketParser.executeStart (C:\Users\aneng\Desktop\netstate\backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (C:\Users\aneng\Desktop\netstate\backend\node_modules\mysql2\lib\connection.js:92:25)
+    at Socket.emit (events.js:223:5)
+    at Socket.EventEmitter.emit (domain.js:475:20)
+    at addChunk (_stream_readable.js:309:12)
+    at readableAddChunk (_stream_readable.js:290:11) {
+  code: 'ER_BAD_DB_ERROR',
+  errno: 1049,
+  sqlState: '42000',
+  sqlMessage: "Unknown database 'orbiter-netstate'",
+  sql: undefined
+}
+[2022-04-13T16:09:47.758] [ERROR] error - error = Error: Unknown database 'orbiter-netstate'
+    at Packet.asError (C:\Users\aneng\Desktop\netstate\backend\node_modules\mysql2\lib\packets\packet.js:728:17)
+    at ClientHandshake.execute (C:\Users\aneng\Desktop\netstate\backend\node_modules\mysql2\lib\commands\command.js:29:26)
+    at PoolConnection.handlePacket (C:\Users\aneng\Desktop\netstate\backend\node_modules\mysql2\lib\connection.js:456:32)
+    at PacketParser.onPacket (C:\Users\aneng\Desktop\netstate\backend\node_modules\mysql2\lib\connection.js:85:12)
+    at PacketParser.executeStart (C:\Users\aneng\Desktop\netstate\backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (C:\Users\aneng\Desktop\netstate\backend\node_modules\mysql2\lib\connection.js:92:25)
+    at Socket.emit (events.js:223:5)
+    at Socket.EventEmitter.emit (domain.js:475:20)
+    at addChunk (_stream_readable.js:309:12)
+    at readableAddChunk (_stream_readable.js:290:11) {
+  code: 'ER_BAD_DB_ERROR',
+  errno: 1049,
+  sqlState: '42000',
+  sqlMessage: "Unknown database 'orbiter-netstate'",
+  sql: undefined
+}
+[2022-04-13T16:14:33.004] [ERROR] error - error = Error: Unknown database 'orbiter-netstate'
+    at Packet.asError (C:\Users\aneng\Desktop\netstate\backend\node_modules\mysql2\lib\packets\packet.js:728:17)
+    at ClientHandshake.execute (C:\Users\aneng\Desktop\netstate\backend\node_modules\mysql2\lib\commands\command.js:29:26)
+    at PoolConnection.handlePacket (C:\Users\aneng\Desktop\netstate\backend\node_modules\mysql2\lib\connection.js:456:32)
+    at PacketParser.onPacket (C:\Users\aneng\Desktop\netstate\backend\node_modules\mysql2\lib\connection.js:85:12)
+    at PacketParser.executeStart (C:\Users\aneng\Desktop\netstate\backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (C:\Users\aneng\Desktop\netstate\backend\node_modules\mysql2\lib\connection.js:92:25)
+    at Socket.emit (events.js:223:5)
+    at Socket.EventEmitter.emit (domain.js:475:20)
+    at addChunk (_stream_readable.js:309:12)
+    at readableAddChunk (_stream_readable.js:290:11) {
+  code: 'ER_BAD_DB_ERROR',
+  errno: 1049,
+  sqlState: '42000',
+  sqlMessage: "Unknown database 'orbiter-netstate'",
+  sql: undefined
+}
+[2022-04-13T16:15:26.266] [ERROR] error - error = Error: Unknown database 'orbiter-netstate'
+    at Packet.asError (C:\Users\aneng\Desktop\netstate\backend\node_modules\mysql2\lib\packets\packet.js:728:17)
+    at ClientHandshake.execute (C:\Users\aneng\Desktop\netstate\backend\node_modules\mysql2\lib\commands\command.js:29:26)
+    at PoolConnection.handlePacket (C:\Users\aneng\Desktop\netstate\backend\node_modules\mysql2\lib\connection.js:456:32)
+    at PacketParser.onPacket (C:\Users\aneng\Desktop\netstate\backend\node_modules\mysql2\lib\connection.js:85:12)
+    at PacketParser.executeStart (C:\Users\aneng\Desktop\netstate\backend\node_modules\mysql2\lib\packet_parser.js:75:16)
+    at Socket.<anonymous> (C:\Users\aneng\Desktop\netstate\backend\node_modules\mysql2\lib\connection.js:92:25)
+    at Socket.emit (events.js:223:5)
+    at Socket.EventEmitter.emit (domain.js:475:20)
+    at addChunk (_stream_readable.js:309:12)
+    at readableAddChunk (_stream_readable.js:290:11) {
+  code: 'ER_BAD_DB_ERROR',
+  errno: 1049,
+  sqlState: '42000',
+  sqlMessage: "Unknown database 'orbiter-netstate'",
+  sql: undefined
+}
+[2022-04-13T16:20:26.874] [ERROR] error - error = [96msrc/model/loopring.ts[0m:[93m2[0m:[93m30[0m - [91merror[0m[90m TS2307: [0mCannot find module './common' or its corresponding type declarations.
+
+[7m2[0m import { CommonEntity } from './common'
+[7m [0m [91m                             ~~~~~~~~~~[0m
+
+[2022-04-13T16:21:38.499] [ERROR] error - error = [96msrc/model/loopring.ts[0m:[93m2[0m:[93m30[0m - [91merror[0m[90m TS2307: [0mCannot find module './common' or its corresponding type declarations.
+
+[7m2[0m import { CommonEntity } from './common'
+[7m [0m [91m                             ~~~~~~~~~~[0m
+
+[2022-04-13T16:25:38.015] [ERROR] error - error = [96msrc/model/loopring.ts[0m:[93m2[0m:[93m30[0m - [91merror[0m[90m TS2307: [0mCannot find module './common' or its corresponding type declarations.
+
+[7m2[0m import { CommonEntity } from './common'
+[7m [0m [91m                             ~~~~~~~~~~[0m
+
+[2022-04-13T16:27:01.722] [ERROR] error - error = [96msrc/model/loopring.ts[0m:[93m2[0m:[93m30[0m - [91merror[0m[90m TS2307: [0mCannot find module './common' or its corresponding type declarations.
+
+[7m2[0m import { CommonEntity } from './common'
+[7m [0m [91m                             ~~~~~~~~~~[0m
+
+[2022-04-13T16:27:39.490] [ERROR] error - error = [96msrc/model/loopring.ts[0m:[93m2[0m:[93m30[0m - [91merror[0m[90m TS2307: [0mCannot find module './common' or its corresponding type declarations.
+
+[7m2[0m import { CommonEntity } from './common'
+[7m [0m [91m                             ~~~~~~~~~~[0m
+
+[2022-04-13T16:33:20.942] [ERROR] error - error = [96msrc/model/loopring.ts[0m:[93m2[0m:[93m30[0m - [91merror[0m[90m TS2307: [0mCannot find module './common' or its corresponding type declarations.
+
+[7m2[0m import { CommonEntity } from './common'
+[7m [0m [91m                             ~~~~~~~~~~[0m
+
+[2022-04-13T17:21:24.978] [ERROR] error - TypeError: Cannot read property 'json' of undefined
+    at C:\Users\aneng\Desktop\netstate\backend\src\controller\chains.ts:7:9
+    at dispatch (C:\Users\aneng\Desktop\netstate\backend\node_modules\koa-compose\index.js:42:32)
+    at C:\Users\aneng\Desktop\netstate\backend\node_modules\koa-router\lib\router.js:372:16
+    at dispatch (C:\Users\aneng\Desktop\netstate\backend\node_modules\koa-compose\index.js:42:32)
+    at C:\Users\aneng\Desktop\netstate\backend\node_modules\koa-compose\index.js:34:12
+    at dispatch (C:\Users\aneng\Desktop\netstate\backend\node_modules\koa-router\lib\router.js:377:31)
+    at dispatch (C:\Users\aneng\Desktop\netstate\backend\node_modules\koa-compose\index.js:42:32)
+    at bodyParser (C:\Users\aneng\Desktop\netstate\backend\node_modules\koa-bodyparser\index.js:95:11)
+    at processTicksAndRejections (internal/process/task_queues.js:94:5)
+    at async cors (C:\Users\aneng\Desktop\netstate\backend\node_modules\koa2-cors\dist\index.js:91:9)
+[2022-04-13T17:21:33.255] [ERROR] error - TypeError: Cannot read property 'json' of undefined
+    at C:\Users\aneng\Desktop\netstate\backend\src\controller\chains.ts:7:9
+    at dispatch (C:\Users\aneng\Desktop\netstate\backend\node_modules\koa-compose\index.js:42:32)
+    at C:\Users\aneng\Desktop\netstate\backend\node_modules\koa-router\lib\router.js:372:16
+    at dispatch (C:\Users\aneng\Desktop\netstate\backend\node_modules\koa-compose\index.js:42:32)
+    at C:\Users\aneng\Desktop\netstate\backend\node_modules\koa-compose\index.js:34:12
+    at dispatch (C:\Users\aneng\Desktop\netstate\backend\node_modules\koa-router\lib\router.js:377:31)
+    at dispatch (C:\Users\aneng\Desktop\netstate\backend\node_modules\koa-compose\index.js:42:32)
+    at bodyParser (C:\Users\aneng\Desktop\netstate\backend\node_modules\koa-bodyparser\index.js:95:11)
+    at processTicksAndRejections (internal/process/task_queues.js:94:5)
+    at async cors (C:\Users\aneng\Desktop\netstate\backend\node_modules\koa2-cors\dist\index.js:91:9)
+[2022-04-13T17:24:30.957] [ERROR] error - TypeError: Cannot set property 'body' of undefined
+    at C:\Users\aneng\Desktop\netstate\backend\src\controller\chains.ts:7:13
+    at dispatch (C:\Users\aneng\Desktop\netstate\backend\node_modules\koa-compose\index.js:42:32)
+    at C:\Users\aneng\Desktop\netstate\backend\node_modules\koa-router\lib\router.js:372:16
+    at dispatch (C:\Users\aneng\Desktop\netstate\backend\node_modules\koa-compose\index.js:42:32)
+    at C:\Users\aneng\Desktop\netstate\backend\node_modules\koa-compose\index.js:34:12
+    at dispatch (C:\Users\aneng\Desktop\netstate\backend\node_modules\koa-router\lib\router.js:377:31)
+    at dispatch (C:\Users\aneng\Desktop\netstate\backend\node_modules\koa-compose\index.js:42:32)
+    at bodyParser (C:\Users\aneng\Desktop\netstate\backend\node_modules\koa-bodyparser\index.js:95:11)
+    at processTicksAndRejections (internal/process/task_queues.js:94:5)
+    at async cors (C:\Users\aneng\Desktop\netstate\backend\node_modules\koa2-cors\dist\index.js:91:9)

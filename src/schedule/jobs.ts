@@ -1,6 +1,7 @@
 import schedule from "node-schedule";
 import { accessLogger, errorLogger } from "../util/logger";
 import checknet from "../service/checknet";
+import { insertChainsNetState, deleteChainsNetState } from "../service/chainToSql"
 
 class MJob {
   protected rule:
@@ -76,10 +77,36 @@ class MJobPessimism extends MJob {
   }
 }
 
-export function jobChechNet(chains: number[]) {
+export function jobCheckNet(chains: number[]) {
   const callback = async () => {
     checknet.startCheckNet(chains);
   };
 
-  new MJobPessimism("*/20 * * * * *", callback, jobChechNet.name).schedule();
+  new MJobPessimism("*/10 * * * * *", callback, jobCheckNet.name).schedule();
+}
+
+export function jobDeleteSqlForChain() {
+  const callback = async () => {
+    deleteChainsNetState();
+  };
+  new MJobPessimism("00 59 23 * * *", callback, jobDeleteSqlForChain.name).schedule();
+
+}
+
+export function jobInsertSqlForChain() {
+  const callback = async () => {
+    let chainsInfo = checknet.getAllChainNetState()
+    let sqlReq: any[] = []
+    for (let key in chainsInfo) {
+      let item = chainsInfo[key]
+      item.created_at = new Date().getTime()
+      sqlReq.push(item)
+    }
+    await insertChainsNetState(sqlReq);
+    for (let key in chainsInfo) {
+      chainsInfo[key].ten_minite_net_state = false
+    }
+  };
+
+  new MJobPessimism("* */10 * * * *", callback, jobInsertSqlForChain.name).schedule();
 }
