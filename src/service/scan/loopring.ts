@@ -4,7 +4,7 @@ import { errorLogger } from "../../util/logger";
 
 let configNet = makerConfig["loopring"].Mainnet;
 let apiKey =
-  process.env == "development"
+  process.env.NODE_ENV == "development"
     ? makerConfig["loopring"].dev_key
     : makerConfig["loopring"].pro_key;
 let accountId = 0;
