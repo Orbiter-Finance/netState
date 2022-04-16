@@ -62,7 +62,7 @@ async function getchainInfos() {
 function pushDataInToFrame(chainInfosFrame, chains) {
   for (let theChain of chains) {
     let obj = chainInfosFrame.find(obj => obj.chainID === theChain.chainID);
-    if (obj&&obj.netstatList.length <= 72) {
+    if (obj && obj.netstatList.length <= 72) {
       obj.netstatList.push(theChain)
     }
   }

@@ -1,7 +1,6 @@
 import path from "path";
 import { ConnectionOptions } from "typeorm";
 
-const isDevelopment = process.env.NODE_ENV == "development";
 
 export const options: ConnectionOptions = {
   type: "mysql",
@@ -10,7 +9,7 @@ export const options: ConnectionOptions = {
   username: process.env.DB_USER || "orbiter",
   password: process.env.DB_PASS || "123456",
   database: process.env.DB_NAME || "orbiter",
-  synchronize: isDevelopment,
+  synchronize: true,
   logging: false,
   extra: {},
 
