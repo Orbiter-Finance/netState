@@ -11,7 +11,9 @@ export default function (router: KoaRouter<DefaultState, Context>) {
   })
   router.get('period/chains', async (ctx) => {
     let chainInfosFrame = await getchainInfos()
-    const chains = await getAllChainsNetState()
+    const startTime = ctx.query.startTime ? new Date(ctx.query.startTime).getTime() : new Date().getTime() - 43200000
+    const endTime = ctx.query.startTime ? new Date(ctx.query.endTime).getTime() : new Date().getTime()
+    const chains = await getAllChainsNetState(startTime, endTime)
     const chainInfos = pushDataInToFrame(chainInfosFrame, chains)
     ctx.body = { chainInfos }
   })
