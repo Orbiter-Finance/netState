@@ -108,5 +108,5 @@ export function jobInsertSqlForChain() {
     }
   };
 
-  new MJobPessimism("* */10 * * * *", callback, jobInsertSqlForChain.name).schedule();
+  new MJobPessimism("0 */10 * * * *", callback, jobInsertSqlForChain.name).schedule();
 }
