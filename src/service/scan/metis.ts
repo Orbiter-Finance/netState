@@ -62,7 +62,7 @@ export default {
         const params = {
             module: "block",
             action: "getblocknobytime",
-            timestamp: req.timestamp,
+            timestamp: req.timestamp-60,
             closest: req.closest,
         };
         try {

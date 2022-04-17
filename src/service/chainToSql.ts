@@ -1,4 +1,4 @@
-import { Repository, getConnection, MoreThanOrEqual } from 'typeorm'
+import { Repository, getConnection, Between } from 'typeorm'
 
 import { Core } from '../util/core'
 import { ChainNetState } from '../model/chainNetState'
@@ -6,18 +6,18 @@ import { errorLogger } from '../util/logger'
 const repositoryChainNetState = (): Repository<ChainNetState> => {
     return Core.db.getRepository(ChainNetState)
 }
-export async function getAllChainsNetState(count = 5) {
-    const lastDayTime = new Date().getTime() - 43200000
+export async function getAllChainsNetState(startTime, endTime, count = 5) {
+
     try {
         const chainsNetState = await repositoryChainNetState().find({
-            created_at: MoreThanOrEqual(lastDayTime)
+            created_at: Between(startTime, endTime)
         })
         return chainsNetState
     } catch (error) {
         if (count <= 0) {
             errorLogger.error('chain-info can not pull from sql. Error=', error)
         } else {
-            return getAllChainsNetState(count--)
+            return getAllChainsNetState(startTime, endTime, count--)
         }
     }
 }
@@ -37,7 +37,7 @@ export async function insertChainsNetState(sqlReq, count = 5) {
 
 export async function deleteChainsNetState(count = 5) {
     try {
-        const lastDayTime = new Date(new Date().getTime() - 2592000000)
+        const lastDayTime = new Date().getTime() - 2592000000
         await getConnection()
             .createQueryBuilder()
             .delete()
