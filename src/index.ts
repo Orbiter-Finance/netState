@@ -61,7 +61,6 @@ const main = async () => {
         // Break if connected
         break;
       } catch (err) {
-        console.log(err, 'err')
         console.log(
           `process: ${process.pid}. Connect to database failed: ${index}`
         );
