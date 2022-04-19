@@ -211,11 +211,16 @@ const scanNet = async function (chainID) {
         zk.net_state = true;
         zk.ten_minite_net_state = true
       }
+      if (zk.net_state) {
+        zk.ten_minite_net_state = true
+      }
       if (zk.net_state && (zk.block_err_count < 15 || zk.tx_err_count < 15)) {
         errorLogger.error("zk error to false net_state = false");
         zk.net_state = false;
       }
-      accessLogger.info("zkState =", zk.net_state);
+
+      accessLogger.info("zkSync net_state=", zk.net_state);
+      accessLogger.info("zkSync ten_minite_net_state=", zk.ten_minite_net_state);
       accessLogger.info("block_err_count =", zk.block_err_count);
       accessLogger.info("tx_err_count =", zk.tx_err_count);
       accessLogger.info("last_block_num =", zk.last_block_num);
@@ -239,7 +244,16 @@ const scanNet = async function (chainID) {
         loop.net_state = true;
         loop.ten_minite_net_state = true
       }
-      accessLogger.info("loop =", loop.net_state);
+      if (loop.net_state && loop.tx_err_count < 15) {
+        errorLogger.error("zk error to false net_state = false");
+        loop.net_state = false;
+      }
+      if (loop.net_state) {
+        loop.ten_minite_net_state = true
+      }
+
+      accessLogger.info("loop net_state=", loop.net_state);
+      accessLogger.info("loop ten_minite_net_state=", loop.ten_minite_net_state);
       accessLogger.info("tx_err_count =", loop.tx_err_count);
       accessLogger.info("last_hash =", loop.last_hash);
       accessLogger.info(
@@ -286,7 +300,12 @@ const scanNet = async function (chainID) {
         errorLogger.error("eth error to false net_state = false");
         eth.net_state = false;
       }
-      accessLogger.info("eth =", eth.net_state);
+      if (eth.net_state) {
+        eth.ten_minite_net_state = true
+      }
+
+      accessLogger.info("eth net_state=", eth.net_state);
+      accessLogger.info("eth ten_minite_net_state=", eth.ten_minite_net_state);
       accessLogger.info("block_err_count =", eth.block_err_count);
       accessLogger.info("tx_err_count =", eth.tx_err_count);
       accessLogger.info("last_block_num =", eth.last_block_num);
@@ -335,7 +354,11 @@ const scanNet = async function (chainID) {
         errorLogger.error("ar error to false net_state = false");
         ar.net_state = false;
       }
-      accessLogger.info("ar =", ar.net_state);
+      if (ar.net_state) {
+        ar.ten_minite_net_state = true
+      }
+      accessLogger.info("ar net_state=", ar.net_state);
+      accessLogger.info("ar ten_minite_net_state=", ar.ten_minite_net_state);
       accessLogger.info("block_err_count =", ar.block_err_count);
       accessLogger.info("tx_err_count =", ar.tx_err_count);
       accessLogger.info("last_block_num =", ar.last_block_num);
@@ -384,7 +407,12 @@ const scanNet = async function (chainID) {
         errorLogger.error("po error to false net_state = false");
         po.net_state = false;
       }
-      accessLogger.info("po =", po.net_state);
+      if (po.net_state) {
+        po.ten_minite_net_state = true
+      }
+
+      accessLogger.info("po net_state=", po.net_state);
+      accessLogger.info("po ten_minite_net_state=", po.ten_minite_net_state);
       accessLogger.info("block_err_count =", po.block_err_count);
       accessLogger.info("tx_err_count =", po.tx_err_count);
       accessLogger.info("last_block_num =", po.last_block_num);
@@ -432,7 +460,11 @@ const scanNet = async function (chainID) {
         errorLogger.error("op error to false net_state = false");
         op.net_state = false;
       }
-      accessLogger.info("op =", op.net_state);
+      if (op.net_state) {
+        op.ten_minite_net_state = true
+      }
+      accessLogger.info("op net_state=", op.net_state);
+      accessLogger.info("op ten_minite_net_state=", op.ten_minite_net_state);
       accessLogger.info("block_err_count =", op.block_err_count);
       accessLogger.info("tx_err_count =", op.tx_err_count);
       accessLogger.info("last_block_num =", op.last_block_num);
@@ -467,7 +499,12 @@ const scanNet = async function (chainID) {
         errorLogger.error("imx error to false net_state = false");
         imx.net_state = false;
       }
-      accessLogger.info("imx =", imx.net_state);
+      if (imx.net_state) {
+        imx.ten_minite_net_state = true
+      }
+
+      accessLogger.info("imx net_state=", imx.net_state);
+      accessLogger.info("imx ten_minite_net_state=", imx.ten_minite_net_state);
       accessLogger.info("tx_err_count =", imx.tx_err_count);
       accessLogger.info("last_hash =", imx.last_hash);
       accessLogger.info(
@@ -515,7 +552,11 @@ const scanNet = async function (chainID) {
         errorLogger.error("metis error to false net_state = false");
         mt.net_state = false;
       }
-      accessLogger.info("metis =", mt.net_state);
+      if (mt.net_state) {
+        mt.ten_minite_net_state = true
+      }
+      accessLogger.info("metis net_state=", mt.net_state);
+      accessLogger.info("metis ten_minite_net_state=", mt.ten_minite_net_state);
       accessLogger.info("block_err_count =", mt.block_err_count);
       accessLogger.info("mt_tx_errCount =", mt.tx_err_count);
       accessLogger.info("last_block_num =", mt.last_block_num);
