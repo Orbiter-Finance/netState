@@ -347,55 +347,6 @@ const scanNet = async function (chainID) {
 
     case 6:
     case 66:
-      let op = chainsInfo.op
-      let OpScanList = await optimistic.getTxList(txListReq, chainID);
-      if (!OpScanList.code) {
-        let newHash = OpScanList["data"];
-        if (newHash && newHash != op.last_hash) {
-          op.last_hash = newHash;
-          op.tx_err_count = 0;
-        } else {
-          op.tx_err_count++;
-        }
-      } else {
-        op.tx_err_count++;
-      }
-      let OpblockNumber = await optimistic.getBlockNumberWithTimeStamp(
-        blockNumReq,
-        chainID
-      );
-      if (!OpblockNumber.code) {
-        let newBlockNum = OpblockNumber["data"];
-        if (newBlockNum == op.last_block_num) {
-          op.block_err_count++;
-        } else {
-          op.last_block_num = newBlockNum;
-          op.block_err_count = 0;
-        }
-      } else {
-        op.block_err_count++;
-      }
-      if (op.block_err_count > 15 && op.tx_err_count > 15 && !op.net_state) {
-        errorLogger.error("op error to true net_state = true");
-        op.net_state = true;
-        op.ten_minite_net_state = true
-      }
-      if (op.net_state && (op.block_err_count < 15 || op.tx_err_count < 15)) {
-        errorLogger.error("op error to false net_state = false");
-        op.net_state = false;
-      }
-      accessLogger.info("op =", op.net_state);
-      accessLogger.info("block_err_count =", op.block_err_count);
-      accessLogger.info("tx_err_count =", op.tx_err_count);
-      accessLogger.info("last_block_num =", op.last_block_num);
-      accessLogger.info("last_hash =", op.last_hash);
-      accessLogger.info(
-        "========================================================"
-      );
-      break;
-
-    case 7:
-    case 77:
       let po = chainsInfo.po
       let PoScanList = await polygon.getTxList(txListReq, chainID);
       if (!PoScanList.code) {
@@ -438,6 +389,54 @@ const scanNet = async function (chainID) {
       accessLogger.info("tx_err_count =", po.tx_err_count);
       accessLogger.info("last_block_num =", po.last_block_num);
       accessLogger.info("last_hash =", po.last_hash);
+      accessLogger.info(
+        "========================================================"
+      );
+      break;
+    case 7:
+    case 77:
+      let op = chainsInfo.op
+      let OpScanList = await optimistic.getTxList(txListReq, chainID);
+      if (!OpScanList.code) {
+        let newHash = OpScanList["data"];
+        if (newHash && newHash != op.last_hash) {
+          op.last_hash = newHash;
+          op.tx_err_count = 0;
+        } else {
+          op.tx_err_count++;
+        }
+      } else {
+        op.tx_err_count++;
+      }
+      let OpblockNumber = await optimistic.getBlockNumberWithTimeStamp(
+        blockNumReq,
+        chainID
+      );
+      if (!OpblockNumber.code) {
+        let newBlockNum = OpblockNumber["data"];
+        if (newBlockNum == op.last_block_num) {
+          op.block_err_count++;
+        } else {
+          op.last_block_num = newBlockNum;
+          op.block_err_count = 0;
+        }
+      } else {
+        op.block_err_count++;
+      }
+      if (op.block_err_count > 15 && op.tx_err_count > 15 && !op.net_state) {
+        errorLogger.error("op error to true net_state = true");
+        op.net_state = true;
+        op.ten_minite_net_state = true
+      }
+      if (op.net_state && (op.block_err_count < 15 || op.tx_err_count < 15)) {
+        errorLogger.error("op error to false net_state = false");
+        op.net_state = false;
+      }
+      accessLogger.info("op =", op.net_state);
+      accessLogger.info("block_err_count =", op.block_err_count);
+      accessLogger.info("tx_err_count =", op.tx_err_count);
+      accessLogger.info("last_block_num =", op.last_block_num);
+      accessLogger.info("last_hash =", op.last_hash);
       accessLogger.info(
         "========================================================"
       );
