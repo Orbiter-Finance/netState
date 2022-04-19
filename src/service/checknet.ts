@@ -29,7 +29,7 @@ let chainsInfo = {
   },
   op: {
     ten_minite_net_state: false,
-    chainID: !isDeveloper ? 6 : 66,
+    chainID: !isDeveloper ? 7 : 77,
     net_state: false,
     last_hash: "",
     tx_err_count: 0,
@@ -74,7 +74,7 @@ let chainsInfo = {
   },
   po: {
     ten_minite_net_state: false,
-    chainID: !isDeveloper ? 7 : 77,
+    chainID: !isDeveloper ? 6 : 66,
     net_state: false,
     last_hash: "",
     last_block_num: 0,
@@ -131,11 +131,11 @@ const chainIdToChainNetState = function (chainID) {
       break
     case 6:
     case 66:
-      shortchainName = 'op'
+      shortchainName = 'po'
       break
     case 7:
     case 77:
-      shortchainName = 'po'
+      shortchainName = 'op'
       break
     case 8:
     case 88:
