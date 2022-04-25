@@ -1,5 +1,9 @@
 import { accessLogger } from "../util/logger";
-import { jobCheckNet, jobDeleteSqlForChain, jobInsertSqlForChain } from "./jobs";
+import {
+  jobCheckNet,
+  jobDeleteSqlForChain,
+  jobInsertSqlForChain
+} from "./jobs";
 
 export let checkNets: number[];
 
@@ -9,8 +13,8 @@ if (process.env.NODE_ENV == "development") {
   checkNets = [1, 2, 3, 6, 7, 8, 9, 10];
 }
 export const startJobs = async () => {
-  accessLogger.info("doCheckNetStatus job...");
+  accessLogger.info("doCheckNetStatus job....");
   jobCheckNet(checkNets);
-  jobDeleteSqlForChain()
-  jobInsertSqlForChain()
+  jobDeleteSqlForChain();
+  jobInsertSqlForChain();
 };
