@@ -7,7 +7,7 @@ import immutablex from "../service/scan/immutablex";
 import optimistic from "../service/scan/optimistic";
 import polygon from "../service/scan/polygon";
 import metis from "../service/scan/metis";
-const isDeveloper = process.env.NODE_ENV == "development"
+const isDeveloper = process.env.NODE_ENV == "development";
 let chainsInfo = {
   eth: {
     ten_minite_net_state: false,
@@ -16,7 +16,7 @@ let chainsInfo = {
     last_hash: "",
     tx_err_count: 0,
     last_block_num: 0,
-    block_err_count: 0,
+    block_err_count: 0
   },
   ar: {
     ten_minite_net_state: false,
@@ -25,7 +25,7 @@ let chainsInfo = {
     last_hash: "",
     tx_err_count: 0,
     last_block_num: 0,
-    block_err_count: 0,
+    block_err_count: 0
   },
   op: {
     ten_minite_net_state: false,
@@ -34,7 +34,7 @@ let chainsInfo = {
     last_hash: "",
     tx_err_count: 0,
     last_block_num: 0,
-    block_err_count: 0,
+    block_err_count: 0
   },
   zk: {
     ten_minite_net_state: false,
@@ -43,7 +43,7 @@ let chainsInfo = {
     last_hash: "",
     tx_err_count: 0,
     last_block_num: 0,
-    block_err_count: 0,
+    block_err_count: 0
   },
   imx: {
     ten_minite_net_state: false,
@@ -52,7 +52,7 @@ let chainsInfo = {
     last_hash: "",
     last_block_num: 0,
     tx_err_count: 0,
-    block_err_count: 0,
+    block_err_count: 0
   },
   loop: {
     ten_minite_net_state: false,
@@ -61,7 +61,7 @@ let chainsInfo = {
     last_hash: "",
     tx_err_count: 0,
     last_block_num: 0,
-    block_err_count: 0,
+    block_err_count: 0
   },
   mt: {
     ten_minite_net_state: false,
@@ -70,7 +70,7 @@ let chainsInfo = {
     last_hash: "",
     tx_err_count: 0,
     last_block_num: 0,
-    block_err_count: 0,
+    block_err_count: 0
   },
   po: {
     ten_minite_net_state: false,
@@ -79,9 +79,9 @@ let chainsInfo = {
     last_hash: "",
     last_block_num: 0,
     tx_err_count: 0,
-    block_err_count: 0,
-  },
-}
+    block_err_count: 0
+  }
+};
 export default {
   /**
    *
@@ -101,61 +101,60 @@ export default {
     }
   },
   getChainNetState: function (chainID) {
-    let shortchainName = chainIdToChainNetState(chainID)
+    let shortchainName = chainIdToChainNetState(chainID);
     if (shortchainName) {
-      return chainsInfo[shortchainName]
+      return chainsInfo[shortchainName];
     } else {
-      return undefined
+      return undefined;
     }
-
   },
   getAllChainNetState: function () {
-    return chainsInfo
+    return chainsInfo;
   }
 };
 
 const chainIdToChainNetState = function (chainID) {
-  let shortchainName = ''
+  let shortchainName = "";
   switch (chainID) {
     case 1:
     case 5:
-      shortchainName = 'eth'
-      break
+      shortchainName = "eth";
+      break;
     case 2:
     case 22:
-      shortchainName = 'ar'
-      break
+      shortchainName = "ar";
+      break;
     case 3:
     case 33:
-      shortchainName = 'zk'
-      break
+      shortchainName = "zk";
+      break;
     case 6:
     case 66:
-      shortchainName = 'op'
-      break
+      shortchainName = "op";
+      break;
     case 7:
     case 77:
-      shortchainName = 'po'
-      break
+      shortchainName = "po";
+      break;
     case 8:
     case 88:
-      shortchainName = 'imx'
-      break
+      shortchainName = "imx";
+      break;
     case 9:
     case 99:
-      shortchainName = 'loop'
-      break
+      shortchainName = "loop";
+      break;
     case 10:
     case 510:
-      shortchainName = 'metis'
-      break
+      shortchainName = "metis";
+      break;
     case 11:
     case 511:
-      shortchainName = 'dydx'
-      break
+      shortchainName = "dydx";
+      break;
   }
-  return shortchainName
-}
+  return shortchainName;
+};
 
 const scanNet = async function (chainID) {
   let timestamp = parseInt(String(new Date().getTime() / 1000));
@@ -179,7 +178,7 @@ const scanNet = async function (chainID) {
   switch (chainID) {
     case 3:
     case 33:
-      let zk = chainsInfo.zk
+      let zk = chainsInfo.zk;
       let ZkScanList = await zksync.getTxList(zkTxListReq, chainID);
       if (!ZkScanList.code) {
         let newHash = ZkScanList["data"];
@@ -209,7 +208,7 @@ const scanNet = async function (chainID) {
       if (zk.block_err_count > 15 && zk.tx_err_count > 15 && !zk.net_state) {
         errorLogger.error("zk error to true net_state = true");
         zk.net_state = true;
-        zk.ten_minite_net_state = true
+        zk.ten_minite_net_state = true;
       }
       if (zk.net_state && (zk.block_err_count < 15 || zk.tx_err_count < 15)) {
         errorLogger.error("zk error to false net_state = false");
@@ -227,17 +226,22 @@ const scanNet = async function (chainID) {
 
     case 9:
     case 99:
-      let loop = chainsInfo.loop
+      let loop = chainsInfo.loop;
       let loopScanList = await loopring.getTxList(chainID);
       if (loopScanList.code || !loopScanList.data) {
         loop.tx_err_count++;
       } else {
+        loop.tx_err_count = 0;
         loop.last_hash = loopScanList.data;
       }
       if (loop.tx_err_count > 15 && !loop.net_state) {
         errorLogger.error("loop error to true net_state = true");
         loop.net_state = true;
-        loop.ten_minite_net_state = true
+        loop.ten_minite_net_state = true;
+      }
+      if (loop.net_state && loop.tx_err_count < 15) {
+        errorLogger.error("loop error to false net_state = false");
+        loop.net_state = false;
       }
       accessLogger.info("loop =", loop.net_state);
       accessLogger.info("tx_err_count =", loop.tx_err_count);
@@ -249,7 +253,7 @@ const scanNet = async function (chainID) {
 
     case 1:
     case 5:
-      let eth = chainsInfo.eth
+      let eth = chainsInfo.eth;
       let ethScanList = await etherscan.getTxList(txListReq, chainID);
       if (!ethScanList.code) {
         let newHash = ethScanList["data"];
@@ -280,9 +284,12 @@ const scanNet = async function (chainID) {
       if (eth.block_err_count > 15 && eth.tx_err_count > 15 && !eth.net_state) {
         errorLogger.error("eth error to true net_state = true");
         eth.net_state = true;
-        eth.ten_minite_net_state = true
+        eth.ten_minite_net_state = true;
       }
-      if (eth.net_state && (eth.block_err_count < 15 || eth.tx_err_count < 15)) {
+      if (
+        eth.net_state &&
+        (eth.block_err_count < 15 || eth.tx_err_count < 15)
+      ) {
         errorLogger.error("eth error to false net_state = false");
         eth.net_state = false;
       }
@@ -298,7 +305,7 @@ const scanNet = async function (chainID) {
 
     case 2:
     case 22:
-      let ar = chainsInfo.ar
+      let ar = chainsInfo.ar;
       let ArScanList = await arbitrum.getTxList(txListReq, chainID);
       if (!ArScanList.code) {
         let newHash = ArScanList["data"];
@@ -329,7 +336,7 @@ const scanNet = async function (chainID) {
       if (ar.block_err_count > 15 && ar.tx_err_count > 15 && !ar.net_state) {
         errorLogger.error("ar error to true net_state = true");
         ar.net_state = true;
-        ar.ten_minite_net_state = true
+        ar.ten_minite_net_state = true;
       }
       if (ar.net_state && (ar.block_err_count < 15 || ar.tx_err_count < 15)) {
         errorLogger.error("ar error to false net_state = false");
@@ -347,7 +354,7 @@ const scanNet = async function (chainID) {
 
     case 6:
     case 66:
-      let op = chainsInfo.op
+      let op = chainsInfo.op;
       let OpScanList = await optimistic.getTxList(txListReq, chainID);
       if (!OpScanList.code) {
         let newHash = OpScanList["data"];
@@ -378,7 +385,7 @@ const scanNet = async function (chainID) {
       if (op.block_err_count > 15 && op.tx_err_count > 15 && !op.net_state) {
         errorLogger.error("op error to true net_state = true");
         op.net_state = true;
-        op.ten_minite_net_state = true
+        op.ten_minite_net_state = true;
       }
       if (op.net_state && (op.block_err_count < 15 || op.tx_err_count < 15)) {
         errorLogger.error("op error to false net_state = false");
@@ -396,7 +403,7 @@ const scanNet = async function (chainID) {
 
     case 7:
     case 77:
-      let po = chainsInfo.po
+      let po = chainsInfo.po;
       let PoScanList = await polygon.getTxList(txListReq, chainID);
       if (!PoScanList.code) {
         let newHash = PoScanList["data"];
@@ -427,7 +434,7 @@ const scanNet = async function (chainID) {
       if (po.block_err_count > 15 && po.tx_err_count > 15 && !po.net_state) {
         errorLogger.error("po error to true net_state = true");
         po.net_state = true;
-        po.ten_minite_net_state = true
+        po.ten_minite_net_state = true;
       }
       if (po.net_state && (po.block_err_count < 15 || po.tx_err_count < 15)) {
         errorLogger.error("po error to false net_state = false");
@@ -445,7 +452,7 @@ const scanNet = async function (chainID) {
 
     case 8:
     case 88:
-      let imx = chainsInfo.imx
+      let imx = chainsInfo.imx;
       const imxList = await immutablex.getTxList(chainID);
       if (!imxList.code) {
         let newHash = imxList["data"];
@@ -462,7 +469,7 @@ const scanNet = async function (chainID) {
       if (imx.tx_err_count > 15 && !imx.net_state) {
         errorLogger.error("imx error to true，set net_state = true");
         imx.net_state = true;
-        imx.ten_minite_net_state = true
+        imx.ten_minite_net_state = true;
       }
       if (imx.net_state && imx.tx_err_count < 15) {
         errorLogger.error("imx error to false net_state = false");
@@ -479,7 +486,7 @@ const scanNet = async function (chainID) {
 
     case 10:
     case 510:
-      let mt = chainsInfo.mt
+      let mt = chainsInfo.mt;
       let MtScanList = await metis.getTxList(txListReq, chainID);
       if (!MtScanList.code) {
         let newHash = MtScanList["data"];
@@ -510,7 +517,7 @@ const scanNet = async function (chainID) {
       if (mt.block_err_count > 15 && mt.tx_err_count > 15 && !mt.net_state) {
         errorLogger.error("metis error to true net_state = true");
         mt.net_state = true;
-        mt.ten_minite_net_state = true
+        mt.ten_minite_net_state = true;
       }
       if (mt.net_state && (mt.block_err_count < 15 || mt.tx_err_count < 15)) {
         errorLogger.error("metis error to false net_state = false");
@@ -526,4 +533,4 @@ const scanNet = async function (chainID) {
       );
       break;
   }
-}
+};
