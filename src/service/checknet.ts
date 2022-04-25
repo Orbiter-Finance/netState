@@ -130,11 +130,11 @@ const chainIdToChainNetState = function (chainID) {
       break;
     case 6:
     case 66:
-      shortchainName = "op";
+      shortchainName = "po";
       break;
     case 7:
     case 77:
-      shortchainName = "po";
+      shortchainName = "op";
       break;
     case 8:
     case 88:
@@ -352,8 +352,8 @@ const scanNet = async function (chainID) {
       );
       break;
 
-    case 6:
-    case 66:
+    case 7:
+    case 77:
       let op = chainsInfo.op;
       let OpScanList = await optimistic.getTxList(txListReq, chainID);
       if (!OpScanList.code) {
@@ -401,8 +401,8 @@ const scanNet = async function (chainID) {
       );
       break;
 
-    case 7:
-    case 77:
+    case 6:
+    case 66:
       let po = chainsInfo.po;
       let PoScanList = await polygon.getTxList(txListReq, chainID);
       if (!PoScanList.code) {
